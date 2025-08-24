@@ -1,0 +1,35 @@
+{
+  "name": "@mng12345/web-crawler",
+  "version": "1.0.6",
+  "description": "A web crawler for llm",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "vitest",
+    "test:watch": "vitest watch",
+    "test:coverage": "vitest run --coverage",
+    "start": "tsx ./src/index.ts",
+    "build": "tsc",
+    "pub": "tsc && npm publish --access=public"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@10.13.1",
+  "dependencies": {
+    "axios": "^1.11.0",
+    "cheerio": "^1.1.2",
+    "commander": "^14.0.0",
+    "fs-extra": "^11.3.1",
+    "p-limit": "^7.1.0"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^24.3.0",
+    "@vitest/coverage-v8": "^3.2.4",
+    "tsx": "^4.20.4",
+    "typescript": "^5.9.2",
+    "vitest": "^3.2.4"
+  }
+}
