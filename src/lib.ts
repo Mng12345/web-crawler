@@ -75,25 +75,25 @@ export function isAllowed(url: URL, basePath: string, domain: string): boolean {
 const limit = pLimit(CONCURRENCY)
 
 export function parseBasePath(url: string): string {
-  const parsedUrl = new URL(url)
-  let basePath = parsedUrl.pathname
+	const parsedUrl = new URL(url)
+	let basePath = parsedUrl.pathname
 	let items = basePath.split('/')
 	if (items[items.length - 1]?.includes('.')) {
 		items = items.slice(0, -1)
 	}
 	basePath = items.join('/')
-  if (!basePath.startsWith('/')) {
-    basePath = `/${basePath}`
-  }
-  if (!basePath.endsWith('/')) {
-    basePath = `${basePath}/`
-  }
-  return basePath
+	if (!basePath.startsWith('/')) {
+		basePath = `/${basePath}`
+	}
+	if (!basePath.endsWith('/')) {
+		basePath = `${basePath}/`
+	}
+	return basePath
 }
 
 export function parseDomain(url: string): string {
-  const parsedUrl = new URL(url)
-  return parsedUrl.hostname
+	const parsedUrl = new URL(url)
+	return parsedUrl.hostname
 }
 
 export function extractLinks(
@@ -177,18 +177,7 @@ export async function fetchAndSave(
 		console.log('✅', url.href, '→', path.relative(process.cwd(), filePath))
 
 		const links = extractLinks(url, res.data, ignoreSet, basePath, domain)
-		await Promise.all(
-			links.map((link) =>
-				fetchAndSave(
-					new URL(link),
-					rootDir,
-					visited,
-					ignoreSet,
-					basePath,
-					domain
-				).catch(() => {})
-			)
-		)
+		await Promise.all(links.map((link) => fetchAndSave(new URL(link), rootDir, visited, ignoreSet, basePath, domain)))
 	} catch (err: any) {
 		console.warn('❌', url.href, err.message || err)
 	}

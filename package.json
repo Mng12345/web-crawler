@@ -10,6 +10,7 @@
     "test:watch": "vitest watch",
     "test:coverage": "vitest run --coverage",
     "start": "tsx ./src/index.ts",
+    "start:debug": "tsx ./src/index.ts https://nodejs.org/docs/latest/api/ -o nodejs",
     "build": "tsc",
     "pub": "tsc && npm publish --access=public"
   },
