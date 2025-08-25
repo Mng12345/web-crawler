@@ -24,6 +24,9 @@ describe('parseBasePath', () => {
     test('should return empty string for root URL', () => {
         expect(parseBasePath('https://example.com/')).toBe('/');
     });
+    test('should parse base path for file URL', () => {
+        expect(parseBasePath('https://example.com/path/to/file.html')).toBe('/path/to/');
+    });
 });
 describe('parseDomain', () => {
     test('should parse domain from URL', () => {

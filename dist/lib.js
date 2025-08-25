@@ -60,6 +60,11 @@ const limit = pLimit(CONCURRENCY);
 export function parseBasePath(url) {
     const parsedUrl = new URL(url);
     let basePath = parsedUrl.pathname;
+    let items = basePath.split('/');
+    if (items[items.length - 1]?.includes('.')) {
+        items = items.slice(0, -1);
+    }
+    basePath = items.join('/');
     if (!basePath.startsWith('/')) {
         basePath = `/${basePath}`;
     }

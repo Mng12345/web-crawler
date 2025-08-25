@@ -5,7 +5,7 @@ async function main() {
     const program = new Command();
     program
         .name('crawler')
-        .description('Simple recursive web crawler')
+        .description('Simple recursive web crawler for llm.')
         .showHelpAfterError(true)
         .argument('<start-url>', 'initial URL to crawl')
         .option('-o, --out-dir <dir>', 'output directory', 'output')
